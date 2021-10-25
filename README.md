@@ -10,6 +10,10 @@
 
 For any other Linux based systems, look it up yourself.
 
+### How to clone
+In order to clone the repo for use, use this command:
+>gh repo clone WolfWindOW/prodcon
+
 ### Compilation
 Compilation can be completed by running the following command with the "producer.c" and "consumer.c" files in the working directory.
 >gcc producer.c -pthread -lrt -o producer
