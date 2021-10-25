@@ -27,7 +27,10 @@ In order to run the program, the following command must be used:
  ![Producer Consumer Output](https://github.com/WolfWindOW/prodcon/blob/main/Prodcon%20outout.jpg)
  
 #### Credits
-Dr. Qiang Guan, functional code
+Dr. Qiang Guan, functional code + explaining the concepts in class
+
 Github user walchko, clearly explained comments, https://gist.github.com/walchko/6d211a2dc8b2f5158642fb2fd65cf295#file-shm-consumer-c-L25
+
 Shivam Mitra, C# semaphores, https://shivammitra.com/c/producer-consumer-problem-in-c/#
+
 https://codereview.stackexchange.com/questions/57133/consumer-producer-implementation-involving-posix-semaphores-and-locks
