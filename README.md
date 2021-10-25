@@ -24,5 +24,5 @@ In order to run the program, the following command must be used:
  ### Output
  Producer will create two items, then wait for the Consumer to consume an item in the shared memory, sending a flag to the Producer that it may produce another item. This will continue until 10 items are created and consumed.
  
- 
+ ![Producer Consumer Output](https://github.com/WolfWindOW/prodcon/blob/main/Prodcon%20outout.jpg)
  
