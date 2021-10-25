@@ -53,6 +53,6 @@ int main() {
     shm_unlink("table");
 
     printf("Consumer cleaned up.\n");
-
+    exit(1);
     return 0;
 }
