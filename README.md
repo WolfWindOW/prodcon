@@ -30,8 +30,11 @@ In order to run the program, the following command must be used:
  
  ![Producer Consumer Output](https://github.com/WolfWindOW/prodcon/blob/main/Prodcon%20outout.jpg)
  
+ ### Acknowledgement
+ It is possible to do this problem in C++, using a struct to create the semaphores, however, this seemed simpler overall, as semaphores are implemented in the C library.
+ 
 #### Credits
-Dr. Qiang Guan, functional code + explaining the concepts in class
+https://www.geeksforgeeks.org/producer-consumer-problem-using-semaphores-set-1/
 
 Github user walchko, clearly explained comments, https://gist.github.com/walchko/6d211a2dc8b2f5158642fb2fd65cf295#file-shm-consumer-c-L25
 
