@@ -33,16 +33,19 @@ int main() {
         exit(1);
     }
 
-    //Creates three semaphores, fill, available, and mutex
-    sem_t *fill = sem_open("fill", O_CREAT, 0666, 0);
-    sem_t *avail = sem_open("available", O_CREAT, 0666, 2);
+    //Creates three semaphores, data, empty, and mutex
+    //Data is initialized with a value of 0, the amount of data starting in the table
+    //Empty is intialized with a value of 2, the amount of data able to be put into the table at the beginning
+    //Mutex is intialized with a value of 0, as no one is currently manipulating the CV
+    sem_t *data = sem_open("data", O_CREAT, 0666, 0);
+    sem_t *empty = sem_open("empty", O_CREAT, 0666, 2);
     sem_t *mutex = sem_open("mutex", O_CREAT, 0666, 1);
 
     int loop = 10;
     printf("\nProducer ready to create %d items. \n", loop);
     for(int i=0; i < loop; i++) {
         //Waits until the memory space has space available for manipulation
-        sem_wait(avail);
+        sem_wait(empty);
 
         //Sleeps 1 second
         int ms = rand() % 2 + 1;
@@ -55,22 +58,22 @@ int main() {
 
         printf("Item produced, there are now %d item(s) in the table.\n", *table);
         //Sends signal that the table has an item to be consumed
-        sem_post(fill);
+        sem_post(data);
     }
 
     //Closes access
-    sem_close(fill);
-    sem_close(avail);
+    sem_close(data);
+    sem_close(empty);
     sem_close(mutex);
 
     //Unlinks semaphores
-    sem_unlink("fill");
-    sem_unlink("available");
+    sem_unlink("data");
+    sem_unlink("empty");
     sem_unlink("mutex");
 
     //Releases resources
-    sem_destroy(fill);
-    sem_destroy(avail);
+    sem_destroy(data);
+    sem_destroy(empty);
     sem_destroy(mutex);
 
     //Unmaps the table and unlinks.
@@ -80,6 +83,6 @@ int main() {
     shm_unlink("table");
 
     printf("Producer cleaned up\n");
-    exit(1);
+    //exit(1);
     return 0;
 }
