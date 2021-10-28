@@ -78,9 +78,18 @@ int main() {
 
     //Unmaps the table and unlinks.
     //Closes the table **unique to producer
-    munmap(table, sizeof(int));
-    close(tbl);
-    shm_unlink("table");
+    if(munmap(table, sizeof(int))==-1){
+        printf("Unmap failed: %s\n", strerror(errno));
+        exit(1);
+    }
+    if(close(tbl)==-1){
+        printf("Error closing: %s\n", strerror(errno));
+        exit(1);
+    }
+    if(shm_unlink("table")==-1){
+        printf("Error removing %s: %s\n", "table", strerror(errno));
+        exit(1);
+    }
 
     printf("Producer cleaned up\n");
     //exit(1);
